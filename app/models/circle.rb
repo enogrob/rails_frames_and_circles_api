@@ -1,9 +1,17 @@
 class Circle < ApplicationRecord
+  def as_json(options = {})
+    super(options).merge(
+      'center_x' => center_x.to_f,
+      'center_y' => center_y.to_f,
+      'diameter' => diameter.to_f
+    )
+  end
   belongs_to :frame
   
-  validates :center_x, presence: true, numericality: true
-  validates :center_y, presence: true, numericality: true
-  validates :diameter, presence: true, numericality: { greater_than: 0 }
+  validates :center_x, :center_y, :diameter, presence: true
+  validates :center_x, numericality: true
+  validates :center_y, numericality: true
+  validates :diameter, numericality: { greater_than: 0 }
   validates :frame_id, presence: true
   
   validate :circle_fits_in_frame
@@ -31,21 +39,21 @@ class Circle < ApplicationRecord
   private
   
   def circle_fits_in_frame
-    return unless frame && diameter
-    
+    return unless frame && diameter && center_x && center_y
+
     # Check if circle fits completely within frame boundaries
     if center_x - radius < frame.left_edge
       errors.add(:center_x, "Circle extends beyond left edge of frame")
     end
-    
+
     if center_x + radius > frame.right_edge
       errors.add(:center_x, "Circle extends beyond right edge of frame")
     end
-    
+
     if center_y - radius < frame.bottom_edge
       errors.add(:center_y, "Circle extends beyond bottom edge of frame")
     end
-    
+
     if center_y + radius > frame.top_edge
       errors.add(:center_y, "Circle extends beyond top edge of frame")
     end

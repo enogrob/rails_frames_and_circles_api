@@ -34,11 +34,35 @@ RSpec.describe 'frames', type: :request do
 
       response(201, 'created') do
         schema '$ref' => '#/components/schemas/Frame'
+        
+        let(:frame) do
+          {
+            frame: {
+              center_x: 10.0,
+              center_y: 15.0,
+              width: 20.0,
+              height: 30.0
+            }
+          }
+        end
+        
         run_test!
       end
 
       response(422, 'unprocessable entity') do
         schema '$ref' => '#/components/schemas/Error'
+        
+        let(:frame) do
+          {
+            frame: {
+              center_x: nil,
+              center_y: 15.0,
+              width: 20.0,
+              height: 30.0
+            }
+          }
+        end
+        
         run_test!
       end
     end
@@ -53,12 +77,17 @@ RSpec.describe 'frames', type: :request do
       produces 'application/json'
 
       response(200, 'successful') do
-        schema '$ref' => '#/components/schemas/FrameWithStats'
+        schema '$ref' => '#/components/schemas/Frame'
+        let!(:frame) { Frame.create!(center_x: 0, center_y: 0, width: 10, height: 10) }
+        let(:id) { frame.id }
         run_test!
       end
 
       response(404, 'not found') do
         schema '$ref' => '#/components/schemas/Error'
+        
+        let(:id) { 99999 }
+        
         run_test!
       end
     end
@@ -81,16 +110,53 @@ RSpec.describe 'frames', type: :request do
 
       response(200, 'successful') do
         schema '$ref' => '#/components/schemas/Frame'
+        let!(:frame_record) { Frame.create!(center_x: 0, center_y: 0, width: 10, height: 10) }
+        let(:id) { frame_record.id }
+        let(:frame) do
+          {
+            frame: {
+              center_x: 12.0,
+              center_y: 18.0,
+              width: 25.0,
+              height: 35.0
+            }
+          }
+        end
         run_test!
       end
 
       response(404, 'not found') do
         schema '$ref' => '#/components/schemas/Error'
+        
+        let(:id) { 99999 }
+        let(:frame) do
+          {
+            frame: {
+              center_x: 12.0,
+              center_y: 18.0,
+              width: 25.0,
+              height: 35.0
+            }
+          }
+        end
+        
         run_test!
       end
 
       response(422, 'unprocessable entity') do
         schema '$ref' => '#/components/schemas/Error'
+        let!(:frame_record) { Frame.create!(center_x: 0, center_y: 0, width: 10, height: 10) }
+        let(:id) { frame_record.id }
+        let(:frame) do
+          {
+            frame: {
+              center_x: nil,
+              center_y: 18.0,
+              width: 25.0,
+              height: 35.0
+            }
+          }
+        end
         run_test!
       end
     end
@@ -100,11 +166,16 @@ RSpec.describe 'frames', type: :request do
       description 'Remove um quadro'
 
       response(204, 'no content') do
+        let!(:frame) { Frame.create!(center_x: 0, center_y: 0, width: 10, height: 10) }
+        let(:id) { frame.id }
         run_test!
       end
 
       response(404, 'not found') do
         schema '$ref' => '#/components/schemas/Error'
+        
+        let(:id) { 99999 }
+        
         run_test!
       end
     end

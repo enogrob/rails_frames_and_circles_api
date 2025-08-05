@@ -223,7 +223,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/FrameWithStats"
+                "$ref": "#/components/schemas/Frame"
         '404':
           description: not found
           content:

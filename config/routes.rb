@@ -12,10 +12,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :frames, only: [:create, :show, :destroy] do
-        resources :circles, only: [:create], controller: 'circles'
+      resources :frames, only: [:index, :create, :show, :update, :destroy] do
+        resources :circles, only: [:index, :create], controller: 'circles'
       end
-      resources :circles, only: [:index, :update, :destroy]
+      resources :circles, only: [:index, :show, :update, :destroy]
     end
   end
 end

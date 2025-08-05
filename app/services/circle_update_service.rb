@@ -1,10 +1,9 @@
 class CircleUpdateService
   def self.call(circle, params)
-    # TODO: Add geometric and business validations here
-    if circle.update(params)
-      circle
-    else
-      circle.errors
+    unless circle.update(params)
+      # If update fails, errors will be present on the circle
+      return circle
     end
+    circle
   end
 end

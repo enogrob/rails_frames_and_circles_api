@@ -1,13 +1,23 @@
 class Frame < ApplicationRecord
   has_many :circles, dependent: :destroy
-  
+
   validates :center_x, presence: true, numericality: true
   validates :center_y, presence: true, numericality: true
   validates :width, presence: true, numericality: { greater_than: 0 }
   validates :height, presence: true, numericality: { greater_than: 0 }
-  
+
   validate :frame_cannot_touch_other_frames
-  
+
+  # Ensure numeric output in JSON
+  def as_json(options = {})
+    super(options).merge(
+      'center_x' => center_x.to_f,
+      'center_y' => center_y.to_f,
+      'width' => width.to_f,
+      'height' => height.to_f
+    )
+  end
+
   # Keep model methods simple and related to data
   def area
     width * height

@@ -10,14 +10,17 @@ RSpec.describe 'circles', type: :request do
       produces 'application/json'
 
       response(200, 'successful') do
-        schema type: :array,
-               items: { '$ref' => '#/components/schemas/Circle' }
-        
+      let!(:frame) { Frame.create!(center_x: 0, center_y: 0, width: 100, height: 100) }
+        let!(:circle) { Circle.create!(frame: frame, center_x: 5.0, center_y: 8.0, diameter: 4.0) }
+        let(:frame_id) { frame.id }
+
+        schema type: :array, items: { '$ref' => '#/components/schemas/Circle' }
         run_test!
       end
 
       response(404, 'frame not found') do
         schema '$ref' => '#/components/schemas/Error'
+        let(:frame_id) { 99999 }
         run_test!
       end
     end
@@ -27,7 +30,7 @@ RSpec.describe 'circles', type: :request do
       description 'Cria um novo círculo no quadro'
       consumes 'application/json'
       produces 'application/json'
-      
+
       parameter name: :circle, in: :body, schema: {
         type: :object,
         properties: {
@@ -39,11 +42,19 @@ RSpec.describe 'circles', type: :request do
       }
 
       response(201, 'created') do
+      let!(:frame) { Frame.create!(center_x: 0, center_y: 0, width: 100, height: 100) }
+        let(:frame_id) { frame.id }
+        let(:circle) { { center_x: 5.0, center_y: 8.0, diameter: 4.0 } }
+        let(:raw_post) { circle.to_json }
         schema '$ref' => '#/components/schemas/Circle'
         run_test!
       end
 
       response(422, 'unprocessable entity') do
+      let!(:frame) { Frame.create!(center_x: 0, center_y: 0, width: 100, height: 100) }
+        let(:frame_id) { frame.id }
+        let(:circle) { { center_x: nil, center_y: 8.0, diameter: 4.0 } }
+        let(:raw_post) { circle.to_json }
         schema '$ref' => '#/components/schemas/Error'
         run_test!
       end
@@ -59,12 +70,16 @@ RSpec.describe 'circles', type: :request do
       produces 'application/json'
 
       response(200, 'successful') do
+      let!(:frame) { Frame.create!(center_x: 0, center_y: 0, width: 100, height: 100) }
+        let!(:circle) { Circle.create!(frame: frame, center_x: 5.0, center_y: 8.0, diameter: 4.0) }
+        let(:id) { circle.id }
         schema '$ref' => '#/components/schemas/Circle'
         run_test!
       end
 
       response(404, 'not found') do
         schema '$ref' => '#/components/schemas/Error'
+        let(:id) { 99999 }
         run_test!
       end
     end
@@ -74,27 +89,49 @@ RSpec.describe 'circles', type: :request do
       description 'Atualiza um círculo'
       consumes 'application/json'
       produces 'application/json'
-      
+
       parameter name: :circle, in: :body, schema: {
         type: :object,
         properties: {
-          center_x: { type: :number, format: :float },
-          center_y: { type: :number, format: :float },
-          diameter: { type: :number, format: :float }
-        }
+          circle: {
+            type: :object,
+            properties: {
+              center_x: { type: :number, format: :float, nullable: true },
+              center_y: { type: :number, format: :float },
+              diameter: { type: :number, format: :float }
+            },
+            required: ["center_y", "diameter"]
+          }
+        },
+        required: ["circle"]
       }
 
       response(200, 'successful') do
+        let!(:frame) { Frame.create!(center_x: 0, center_y: 0, width: 100, height: 100) }
+        let!(:circle) { Circle.create!(frame: frame, center_x: 5.0, center_y: 8.0, diameter: 4.0) }
+        let(:id) { circle.id }
+        let(:circle_params) { { center_x: 10.0, center_y: 15.0, diameter: 8.0 } }
+        let(:raw_post) { { circle: circle_params }.to_json }
         schema '$ref' => '#/components/schemas/Circle'
         run_test!
       end
 
       response(404, 'not found') do
         schema '$ref' => '#/components/schemas/Error'
+        let(:id) { 99999 }
+        let(:circle_params) { { center_x: 10.0, center_y: 15.0, diameter: 8.0 } }
+        let(:circle) { { circle: circle_params } }
+        let(:raw_post) { circle.to_json }
         run_test!
       end
 
       response(422, 'unprocessable entity') do
+        let!(:frame) { Frame.create!(center_x: 0, center_y: 0, width: 100, height: 100) }
+        let!(:circle_record) { Circle.create!(frame: frame, center_x: 5.0, center_y: 8.0, diameter: 4.0) }
+        let(:id) { circle_record.id }
+        let(:circle_params) { { center_x: nil, center_y: 15.0, diameter: 8.0 } }
+        let(:circle) { { circle: circle_params } }
+        let(:raw_post) { circle.to_json }
         schema '$ref' => '#/components/schemas/Error'
         run_test!
       end
@@ -105,11 +142,15 @@ RSpec.describe 'circles', type: :request do
       description 'Remove um círculo'
 
       response(204, 'no content') do
+        let!(:frame) { Frame.create!(center_x: 0, center_y: 0, width: 100, height: 100) }
+        let!(:circle) { Circle.create!(frame: frame, center_x: 5.0, center_y: 8.0, diameter: 4.0) }
+        let(:id) { circle.id }
         run_test!
       end
 
       response(404, 'not found') do
         schema '$ref' => '#/components/schemas/Error'
+        let(:id) { 99999 }
         run_test!
       end
     end
