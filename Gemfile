@@ -33,16 +33,14 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "rswag", "~> 2.16"
+  gem "rswag-api", "~> 2.16"
+  gem "rswag-ui", "~> 2.16"
+  gem "rswag-specs", "~> 2.16"
 end
 
 gem "rspec-rails", "~> 8.0", groups: [ :development, :test ]
 
 gem "simplecov", "~> 0.22.0", group: :test
-
-gem "rswag", "~> 2.16", group: :development
-
-gem "rswag-api", "~> 2.16", group: :development
-
-gem "rswag-ui", "~> 2.16", group: :development
-
-gem "rswag-specs", "~> 2.16", groups: [:development, :test]
+gem "pg", ">= 1.1"
