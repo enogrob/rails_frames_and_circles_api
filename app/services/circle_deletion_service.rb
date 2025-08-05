@@ -1,5 +1,6 @@
 class CircleDeletionService
   def self.call(circle)
-    # TODO: Implement circle deletion logic and validations
+    circle.destroy
+    circle
   end
 end
