@@ -38,3 +38,11 @@ end
 gem "rspec-rails", "~> 8.0", groups: [ :development, :test ]
 
 gem "simplecov", "~> 0.22.0", group: :test
+
+gem "rswag", "~> 2.16", group: :development
+
+gem "rswag-api", "~> 2.16", group: :development
+
+gem "rswag-ui", "~> 2.16", group: :development
+
+gem "rswag-specs", "~> 2.16", groups: [:development, :test]
