@@ -29,14 +29,15 @@ Key features include:
 - Circles must never touch each other within the same frame.
 - Circles must always fit entirely within their parent frame.
 - Frames themselves do not touch or intersect.
+
+    <img src="public/screenshot_94.png" alt="Screenshot" style="max-width:70%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);" />
+
 - All measurements are expressed in centimeters, supporting decimal values for precision.
 - Business logic is encapsulated in service objects for maintainability and testability.
 - Comprehensive model validations enforce geometric constraints at the data layer.
 - API endpoints are documented with Swagger/OpenAPI for easy integration and exploration.
 - Full test coverage is provided via RSpec, ensuring reliability and confidence in the codebase.
 - The project is containerized with Docker Compose and uses PostgreSQL for persistent storage, making it suitable for both local development and production deployment.
-
-![](public/screenshot_94.png)
 
 ## Architecture
 
