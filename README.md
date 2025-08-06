@@ -224,11 +224,6 @@ graph TD
     DockerCompose --> Database_Container
     PostgreSQL -.-> Rails
 
-    style External fill:#b2f7ef,stroke:#81c784,stroke-width:2px
-    style Docker_Environment fill:#ffe0b2,stroke:#ffb300,stroke-width:2px
-    style Web_Container fill:#b2f7ef,stroke:#81c784,stroke-width:2px
-    style Database_Container fill:#cfd8dc,stroke:#607d8b,stroke-width:2px
-    style Network fill:#fff9c4,stroke:#ffd54f,stroke-width:2px
     style Rails fill:#b2f7ef,stroke:#388e3c,stroke-width:2px
     style Swagger fill:#e1bee7,stroke:#7e57c2,stroke-width:2px
     style RSpec fill:#ffe0b2,stroke:#ffb300,stroke-width:2px
