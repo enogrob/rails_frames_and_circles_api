@@ -194,18 +194,20 @@ Web --> DockerCompose
 
 ```mermaid
 gitGraph
-commit id: "rails-initial-setup"
-commit id: "rspec-initial-setup"
-commit id: "model-initial-setup"
-commit id: "service-initial-setup"
-commit id: "controller-routes-initial-setup"
-commit id: "add-tests"
-commit id: "add-docker-and-docker-compose"
-commit id: "add-simplecov"
+commit id: "rails-setup"
+commit id: "setup-rspec"
+commit id: "setup-simplecov"
+commit id: "setup-rubocop"
+commit id: "setup-openapi-swagger"
+commit id: "add-models-and-migrations"
+commit id: "add-controllers"
+commit id: "setup-services-and-routes"
+commit id: "update-services"
+commit id: "debug-spec-requests"
+commit id: "add-unit-tests"
+commit id: "add-service-tests"
+commit id: "setup-docker-and-compose"
 commit id: "add-readme"
-commit id: "improved-validation"
-commit id: "swagger-setup"
-commit id: "finalize-api"
 ```
 </details>
 
