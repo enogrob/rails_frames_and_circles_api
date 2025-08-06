@@ -138,7 +138,6 @@ graph TD
 classDiagram
     class Frame {
         +center_x: float
-        +center_y: float
         +width: float
         +height: float
         +has_many: circles
@@ -162,10 +161,6 @@ mindmap
   root((🟢 Frames and Circles API))
     Models
       Frame
-      Circle
-    Services
-      FrameCreationService
-      FrameDeletionService
       CircleCreationService
       CircleDeletionService
       CircleQueryService
