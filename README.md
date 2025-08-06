@@ -50,25 +50,26 @@ The API is structured with:
 - **API Documentation**: Swagger/OpenAPI via RSwag
 
 ```mermaid
+%% Architecture Diagram with Pastel Colors and Emoticons
 graph TD
-    subgraph API_Layer[API Layer]
-        FramesController
-        CirclesController
+    subgraph API_Layer[🟢 API Layer]
+        FramesController[🟢 FramesController]
+        CirclesController[🟢 CirclesController]
     end
-    subgraph Models[Models]
-        Frame
-        Circle
+    subgraph Models[🟣 Models]
+        Frame[🟣 Frame]
+        Circle[🟣 Circle]
     end
-    subgraph Services[Services]
-        FrameCreationService
-        FrameDeletionService
-        CircleCreationService
-        CircleDeletionService
-        CircleQueryService
-        CircleUpdateService
+    subgraph Services[🧩 Services]
+        FrameCreationService[🧩 FrameCreationService]
+        FrameDeletionService[🧩 FrameDeletionService]
+        CircleCreationService[🧩 CircleCreationService]
+        CircleDeletionService[🧩 CircleDeletionService]
+        CircleQueryService[🧩 CircleQueryService]
+        CircleUpdateService[🧩 CircleUpdateService]
     end
-    subgraph Database[Database]
-        PostgreSQL[(PostgreSQL)]
+    subgraph Database[🗄️ Database]
+        PostgreSQL[🗄️ PostgreSQL]
     end
 
     FramesController --> Frame
@@ -81,27 +82,37 @@ graph TD
     CirclesController --> CircleUpdateService
     Frame --> PostgreSQL
     Circle --> PostgreSQL
+
+    classDef api fill:#b2f7ef,stroke:#81c784,stroke-width:2px;
+    classDef model fill:#e1bee7,stroke:#7e57c2,stroke-width:2px;
+    classDef service fill:#ffe0b2,stroke:#ffb300,stroke-width:2px;
+    classDef db fill:#cfd8dc,stroke:#607d8b,stroke-width:2px;
+    class FramesController,CirclesController api;
+    class Frame,Circle model;
+    class FrameCreationService,FrameDeletionService,CircleCreationService,CircleDeletionService,CircleQueryService,CircleUpdateService service;
+    class PostgreSQL db;
 ```
 
 <details>
 <summary><strong>1. Gems Dependency Diagram - Dependencies and Models</strong> (Click to expand)</summary>
 
 ```mermaid
+%% Gems Dependency Diagram with Pastel Colors and Emoticons
 graph TD
     subgraph "Core Gems"
-        Rails[Rails 8.0.2]
-        RSpec[RSpec 8.0]
-        RSwag[RSwag 2.16]
-        Brakeman[Brakeman]
-        SimpleCov[SimpleCov]
-        Puma[Puma]
-        Thruster[Thruster]
-        Rubocop[Rubocop]
+        Rails[🟢 Rails 8.0.2]
+        RSpec[🧪 RSpec 8.0]
+        RSwag[📖 RSwag 2.16]
+        Brakeman[🛡️ Brakeman]
+        SimpleCov[🧪 SimpleCov]
+        Puma[🐾 Puma]
+        Thruster[🚀 Thruster]
+        Rubocop[📝 Rubocop]
     end
 
     subgraph "Models"
-        Frame
-        Circle
+        Frame[🟣 Frame]
+        Circle[🟣 Circle]
     end
 
     Rails --> Frame
@@ -111,6 +122,11 @@ graph TD
     RSwag --> Rails
     Brakeman --> Rails
     SimpleCov --> RSpec
+
+    classDef gem fill:#b2f7ef,stroke:#81c784,stroke-width:2px;
+    classDef model fill:#e1bee7,stroke:#7e57c2,stroke-width:2px;
+    class Rails,RSwag,Brakeman,SimpleCov,Puma,Thruster,Rubocop gem;
+    class Frame,Circle model;
 ```
 </details>
 
@@ -118,6 +134,7 @@ graph TD
 <summary><strong>2. Dependencies and Models</strong> (Click to expand)</summary>
 
 ```mermaid
+%% Class Diagram with Pastel Colors and Emoticons
 classDiagram
     class Frame {
         +center_x: float
@@ -140,8 +157,9 @@ classDiagram
 <summary><strong>3. Mind Map - Interconnected Themes</strong> (Click to expand)</summary>
 
 ```mermaid
+%% Mind Map with Pastel Colors and Emoticons
 mindmap
-  root((Frames and Circles API))
+  root((🟢 Frames and Circles API))
     Models
       Frame
       Circle
@@ -174,25 +192,26 @@ mindmap
 <summary><strong>4. Deployment Architecture</strong> (Click to expand)</summary>
 
 ```mermaid
+%% Deployment Diagram with Pastel Colors and Emoticons
 graph TD
-    subgraph External[External Access]
-        User[User/Client]
-        Browser[Web Browser]
+    subgraph External[🌐 External Access]
+        User[🧑‍💻 User/Client]
+        Browser[🌍 Web Browser]
     end
     
-    subgraph Docker_Environment[Docker Compose Environment]
-        subgraph Web_Container[Web Container]
-            Rails[Rails API Server]
-            Swagger[Swagger UI]
-            RSpec[RSpec Tests]
+    subgraph Docker_Environment[📦 Docker Compose Environment]
+        subgraph Web_Container[🟢 Web Container]
+            Rails[🟢 Rails API Server]
+            Swagger[📖 Swagger UI]
+            RSpec[🧪 RSpec Tests]
         end
         
-        subgraph Database_Container[Database Container]
-            PostgreSQL[(PostgreSQL Database)]
+        subgraph Database_Container[🗄️ Database Container]
+            PostgreSQL[🗄️ PostgreSQL Database]
         end
         
-        subgraph Network[Docker Network]
-            DockerCompose[Docker Compose Orchestration]
+        subgraph Network[🔗 Docker Network]
+            DockerCompose[🔗 Docker Compose Orchestration]
         end
     end
 
@@ -204,6 +223,17 @@ graph TD
     DockerCompose --> Web_Container
     DockerCompose --> Database_Container
     PostgreSQL -.-> Rails
+
+    style External fill:#b2f7ef,stroke:#81c784,stroke-width:2px
+    style Docker_Environment fill:#ffe0b2,stroke:#ffb300,stroke-width:2px
+    style Web_Container fill:#b2f7ef,stroke:#81c784,stroke-width:2px
+    style Database_Container fill:#cfd8dc,stroke:#607d8b,stroke-width:2px
+    style Network fill:#fff9c4,stroke:#ffd54f,stroke-width:2px
+    style Rails fill:#b2f7ef,stroke:#388e3c,stroke-width:2px
+    style Swagger fill:#e1bee7,stroke:#7e57c2,stroke-width:2px
+    style RSpec fill:#ffe0b2,stroke:#ffb300,stroke-width:2px
+    style PostgreSQL fill:#cfd8dc,stroke:#607d8b,stroke-width:2px
+    style DockerCompose fill:#fff9c4,stroke:#ffd54f,stroke-width:2px
 ```
 </details>
 
@@ -211,22 +241,23 @@ graph TD
 <summary><strong>5. Git Graph - Project Evolution</strong> (Click to expand)</summary>
 
 ```mermaid
+%% Git Graph with Emoticons
 gitGraph
-commit id: "rails-setup"
-commit id: "setup-rspec"
-commit id: "setup-simplecov"
-commit id: "setup-rubocop"
-commit id: "setup-openapi-swagger"
-commit id: "add-models-and-migrations"
-commit id: "add-controllers"
-commit id: "setup-services-and-routes"
-commit id: "update-services"
-commit id: "debug-spec-requests"
-commit id: "add-unit-tests"
-commit id: "add-service-tests"
-commit id: "setup-docker-and-compose"
-commit id: "rubocop-corrected"
-commit id: "add-readme"
+commit id: "rails-setup" tag: "🎉"
+commit id: "setup-rspec" tag: "🧪"
+commit id: "setup-simplecov" tag: "🧪"
+commit id: "setup-rubocop" tag: "📝"
+commit id: "setup-openapi-swagger" tag: "📖"
+commit id: "add-models-and-migrations" tag: "🟣"
+commit id: "add-controllers" tag: "🟢"
+commit id: "setup-services-and-routes" tag: "🧩"
+commit id: "update-services" tag: "🧩"
+commit id: "debug-spec-requests" tag: "🧪"
+commit id: "add-unit-tests" tag: "🧪"
+commit id: "add-service-tests" tag: "🧪"
+commit id: "setup-docker-and-compose" tag: "📦"
+commit id: "rubocop-corrected" tag: "📝"
+commit id: "add-readme" tag: "📖"
 ```
 </details>
 
@@ -294,6 +325,52 @@ Access the full Swagger UI at `/api-docs` when the server is running.
 
 </details>
 
+<details>
+<summary><strong>7. Test Coverage Results</strong> (Click to expand)</summary>
+
+```mermaid
+pie
+    title 🧪 Overall Coverage
+    "✅ Covered (587 lines)" : 587
+    "❌ Missed (2 lines)" : 2
+```
+
+```mermaid
+%% File-by-file coverage bar chart
+graph TD
+    frames_controller["🟡 frames_controller.rb\n97.06%"]:::partial
+    circle_model["🟡 circle.rb\n97.50%"]:::partial
+    circles_controller["🟢 circles_controller.rb\n100%"]:::full
+    application_controller["🟢 application_controller.rb\n100%"]:::full
+    application_record["🟢 application_record.rb\n100%"]:::full
+    frame_model["🟢 frame.rb\n100%"]:::full
+    circle_creation_service["🟢 circle_creation_service.rb\n100%"]:::full
+    circle_deletion_service["🟢 circle_deletion_service.rb\n100%"]:::full
+    frame_creation_service["🟢 frame_creation_service.rb\n100%"]:::full
+    routes["🟢 routes.rb\n100%"]:::full
+    circle_spec["🟢 circle_spec.rb\n100%"]:::full
+    frame_edge_cases_spec["🟢 frame_edge_cases_spec.rb\n100%"]:::full
+    frame_spec["🟢 frame_spec.rb\n100%"]:::full
+    circles_spec["🟢 circles_spec.rb\n100%"]:::full
+    frames_spec["🟢 frames_spec.rb\n100%"]:::full
+    circle_creation_service_spec["🟢 circle_creation_service_spec.rb\n100%"]:::full
+    circle_deletion_service_spec["🟢 circle_deletion_service_spec.rb\n100%"]:::full
+    swagger_helper["🟢 swagger_helper.rb\n100%"]:::full
+
+    classDef full fill:#b2f7ef,stroke:#81c784,stroke-width:2px;
+    classDef partial fill:#fff9c4,stroke:#ffd54f,stroke-width:2px;
+```
+
+**Summary:**  
+- **All Files:** 99.66% covered at 2.63 hits/line  
+- **18 files in total**  
+- **589 relevant lines, 587 lines covered, 2 lines missed**  
+- **Only 2 files have missed lines:**  
+  - `app/controllers/api/v1/frames_controller.rb` (1 missed)
+  - `app/models/circle.rb` (1 missed)
+
+</details>
+
 ## Tech Stack
 
 - Ruby 3.2.2
@@ -329,6 +406,8 @@ Access the full Swagger UI at `/api-docs` when the server is running.
    ```
 6. Access the API at [http://localhost:3000](http://localhost:3000)
 7. View Swagger docs at [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+
+![](public/screenshot_95.png)
 
 
 ## Usage Examples
