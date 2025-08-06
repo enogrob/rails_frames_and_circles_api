@@ -133,22 +133,35 @@ graph TD
 <details>
 <summary><strong>2. Dependencies and Models</strong> (Click to expand)</summary>
 
+
 ```mermaid
-%% Class Diagram with Pastel Colors and Emoticons
-classDiagram
-    class Frame {
-        +center_x: float
-        +width: float
-        +height: float
-        +has_many: circles
-    }
-    class Circle {
-        +center_x: float
-        +center_y: float
-        +diameter: float
-        +belongs_to: frame
-    }
-    Frame "1" --> "*" Circle : contains
+%% Dependencies and Models Diagram (Graph TD, Lighter Pastel Colors, More Emoticons)
+graph TD
+    subgraph Frame[🟣 Frame 🖼️]
+        F_center_x[center_x 🟢]
+        F_center_y[center_y 🟢]
+        F_width[width 📏]
+        F_height[height 📏]
+        F_no_intersection[validates_no_intersection 🚫🖼️]
+        F_containment[validates_containment 🟣✅]
+        F_has_many[has_many_circles 🟣⚪]
+    end
+    subgraph Circle[🟣 Circle ⚪]
+        C_center_x[center_x 🟢]
+        C_center_y[center_y 🟢]
+        C_diameter[diameter 📏]
+        C_frame_id[frame_id 🖼️]
+        C_no_touching[validates_no_touching 🚫⚪]
+        C_within_frame[validates_within_frame 🖼️✅]
+        C_belongs_to[belongs_to_frame 🖼️]
+    end
+    Frame -- contains 🟣⚪ --> Circle
+    Circle -- belongs to 🖼️ --> Frame
+
+    classDef frame fill:#fce4ec,stroke:#ce93d8,stroke-width:2px,color:#222;
+    classDef circle fill:#e0f2f1,stroke:#4dd0e1,stroke-width:2px,color:#222;
+    class Frame,F_center_x,F_center_y,F_width,F_height,F_no_intersection,F_containment,F_has_many frame;
+    class Circle,C_center_x,C_center_y,C_diameter,C_frame_id,C_no_touching,C_within_frame,C_belongs_to circle;
 ```
 </details>
 
@@ -316,36 +329,42 @@ commit id: "add-readme" tag: "📖"
 <details>
 <summary><strong>7. Test Coverage Results</strong> (Click to expand)</summary>
 
-- **Overall Coverage:** 99.66% (587/589 lines)
+<div style="background:#fce4ec; border-radius:8px; padding:12px;">
+<strong>🌈 Test Coverage Results</strong> <br>
+<span style="font-size:1.1em;">Overall Coverage: <strong>99.66%</strong> <span title="Lines Covered">(587/589)</span> 🎯</span>
+</div>
 
-| File                              | Coverage   |
-|-----------------------------------|------------|
-| frames_controller.rb              | 97.06%     |
-| circle.rb                         | 97.50%     |
-| circles_controller.rb             | 100%       |
-| application_controller.rb         | 100%       |
-| application_record.rb             | 100%       |
-| frame.rb                          | 100%       |
-| circle_creation_service.rb        | 100%       |
-| circle_deletion_service.rb        | 100%       |
-| frame_creation_service.rb         | 100%       |
-| routes.rb                         | 100%       |
-| circle_spec.rb                    | 100%       |
-| frame_edge_cases_spec.rb          | 100%       |
-| frame_spec.rb                     | 100%       |
-| circles_spec.rb                   | 100%       |
-| frames_spec.rb                    | 100%       |
-| circle_creation_service_spec.rb   | 100%       |
-| circle_deletion_service_spec.rb   | 100%       |
-| swagger_helper.rb                 | 100%       |
+| 📄 <span style="color:#7e57c2">File</span> | ✅ <span style="color:#388e3c">Coverage</span> |
+|:-----------------------------------|:------------:|
+| frames_controller.rb              | 97.06% 🟡     |
+| circle.rb                         | 97.50% 🟡     |
+| circles_controller.rb             | 100% 🟢       |
+| application_controller.rb         | 100% 🟢       |
+| application_record.rb             | 100% 🟢       |
+| frame.rb                          | 100% 🟢       |
+| circle_creation_service.rb        | 100% 🟢       |
+| circle_deletion_service.rb        | 100% 🟢       |
+| frame_creation_service.rb         | 100% 🟢       |
+| routes.rb                         | 100% 🟢       |
+| circle_spec.rb                    | 100% 🟢       |
+| frame_edge_cases_spec.rb          | 100% 🟢       |
+| frame_spec.rb                     | 100% 🟢       |
+| circles_spec.rb                   | 100% 🟢       |
+| frames_spec.rb                    | 100% 🟢       |
+| circle_creation_service_spec.rb   | 100% 🟢       |
+| circle_deletion_service_spec.rb   | 100% 🟢       |
+| swagger_helper.rb                 | 100% 🟢       |
 
-**Summary:**  
-- **All Files:** 99.66% covered at 2.63 hits/line  
-- **18 files in total**  
-- **589 relevant lines, 587 lines covered, 2 lines missed**  
-- **Only 2 files have missed lines:**  
-  - `app/controllers/api/v1/frames_controller.rb` (1 missed)  
-  - `app/models/circle.rb` (1 missed)
+<div style="background:#e0f2f1; border-radius:8px; padding:8px; margin-top:8px;">
+<strong>Summary:</strong> <br>
+<span style="font-size:1em;">All Files: <strong>99.66%</strong> covered at 2.63 hits/line <br>
+18 files in total <br>
+589 relevant lines, 587 lines covered, <span style="color:#e57373">2 lines missed</span> <br>
+<span style="color:#fbc02d">Only 2 files have missed lines:</span> <br>
+<span style="color:#e57373">app/controllers/api/v1/frames_controller.rb</span> (1 missed) <br>
+<span style="color:#e57373">app/models/circle.rb</span> (1 missed)
+</span>
+</div>
 
 </details>
 
