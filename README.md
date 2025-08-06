@@ -259,64 +259,62 @@ commit id: "add-readme" tag: "📖"
 <details>
 <summary><strong>6. API Documentation - OpenAPI Specification</strong> (Click to expand)</summary>
 
-<div style="background-color: #fffbf0; border-left: 4px solid #ffc107; padding: 15px; margin: 10px 0;">
-
-### Base URL
-- **Development**: `http://localhost:3000`
-
-### Endpoints Overview
-
-#### Frames API (`/api/v1/frames`)
-- `GET /api/v1/frames` - List all frames
-- `POST /api/v1/frames` - Create a new frame
-- `GET /api/v1/frames/{id}` - Get frame details with statistics
-- `PUT /api/v1/frames/{id}` - Update a frame
-- `DELETE /api/v1/frames/{id}` - Delete a frame
-
-#### Circles API (`/api/v1/circles`)
-- `GET /api/v1/frames/{frame_id}/circles` - List circles in a frame
-- `POST /api/v1/frames/{frame_id}/circles` - Create a circle in a frame
-- `GET /api/v1/circles/{id}` - Get circle details
-- `PUT /api/v1/circles/{id}` - Update a circle
-- `DELETE /api/v1/circles/{id}` - Delete a circle
-
-### Data Models
-
-#### Frame Schema
-```json
-{
-  "id": 1,
-  "center_x": 0.0,
-  "center_y": 0.0,
-  "width": 10.0,
-  "height": 10.0,
-  "created_at": "2025-01-01T00:00:00.000Z",
-  "updated_at": "2025-01-01T00:00:00.000Z"
-}
-```
-
-#### Circle Schema
-```json
-{
-  "id": 1,
-  "center_x": 1.0,
-  "center_y": 1.0,
-  "diameter": 2.0,
-  "frame_id": 1,
-  "created_at": "2025-01-01T00:00:00.000Z",
-  "updated_at": "2025-01-01T00:00:00.000Z"
-}
-```
-
-### Response Codes
-- `200` - Successful GET/PUT requests
-- `201` - Successful POST requests (resource created)
-- `204` - Successful DELETE requests (no content)
-- `404` - Resource not found
-- `422` - Unprocessable entity (validation errors)
-
-### Interactive Documentation
-Access the full Swagger UI at `/api-docs` when the server is running.
+> ### Base URL
+> - **Development**: `http://localhost:3000`
+>
+> ### Endpoints Overview
+>
+> #### Frames API (`/api/v1/frames`)
+> - `GET /api/v1/frames` - List all frames
+> - `POST /api/v1/frames` - Create a new frame
+> - `GET /api/v1/frames/{id}` - Get frame details with statistics
+> - `PUT /api/v1/frames/{id}` - Update a frame
+> - `DELETE /api/v1/frames/{id}` - Delete a frame
+>
+> #### Circles API (`/api/v1/circles`)
+> - `GET /api/v1/frames/{frame_id}/circles` - List circles in a frame
+> - `POST /api/v1/frames/{frame_id}/circles` - Create a circle in a frame
+> - `GET /api/v1/circles/{id}` - Get circle details
+> - `PUT /api/v1/circles/{id}` - Update a circle
+> - `DELETE /api/v1/circles/{id}` - Delete a circle
+>
+> ### Data Models
+>
+> #### Frame Schema
+> ```json
+> {
+>   "id": 1,
+>   "center_x": 0.0,
+>   "center_y": 0.0,
+>   "width": 10.0,
+>   "height": 10.0,
+>   "created_at": "2025-01-01T00:00:00.000Z",
+>   "updated_at": "2025-01-01T00:00:00.000Z"
+> }
+> ```
+>
+> #### Circle Schema
+> ```json
+> {
+>   "id": 1,
+>   "center_x": 1.0,
+>   "center_y": 1.0,
+>   "diameter": 2.0,
+>   "frame_id": 1,
+>   "created_at": "2025-01-01T00:00:00.000Z",
+>   "updated_at": "2025-01-01T00:00:00.000Z"
+> }
+> ```
+>
+> ### Response Codes
+> - `200` - Successful GET/PUT requests
+> - `201` - Successful POST requests (resource created)
+> - `204` - Successful DELETE requests (no content)
+> - `404` - Resource not found
+> - `422` - Unprocessable entity (validation errors)
+>
+> ### Interactive Documentation
+> Access the full Swagger UI at `/api-docs` when the server is running.
 
 </details>
 
