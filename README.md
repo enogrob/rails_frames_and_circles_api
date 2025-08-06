@@ -310,7 +310,8 @@ Access the full Swagger UI at `/api-docs` when the server is running.
    docker compose exec web bundle exec rspec
    ```
 6. Access the API at [http://localhost:3000](http://localhost:3000)
-7. View Swagger docs at `/api-docs`
+7. View Swagger docs at [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+
 
 ## Usage Examples
 
