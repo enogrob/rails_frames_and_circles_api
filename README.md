@@ -36,7 +36,7 @@ Key features include:
 - Full test coverage is provided via RSpec, ensuring reliability and confidence in the codebase.
 - The project is containerized with Docker Compose and uses PostgreSQL for persistent storage, making it suitable for both local development and production deployment.
 
-This API is ideal for technical assessments, geometric modeling applications, and any use case requiring strict spatial constraints and high data integrity. Its clear separation of concerns, modern Rails practices, and thorough documentation make it a strong example of best practices in Rails API development.
+![](public/screenshot_94.png)
 
 ## Architecture
 
@@ -174,18 +174,35 @@ mindmap
 
 ```mermaid
 graph TD
-User[User]
-Web[Web Container Rails API]
-DB[PostgreSQL Container]
-Swagger[Swagger UI]
-RSpec[Testing]
-DockerCompose[Docker Compose]
+    subgraph External[External Access]
+        User[User/Client]
+        Browser[Web Browser]
+    end
+    
+    subgraph Docker_Environment[Docker Compose Environment]
+        subgraph Web_Container[Web Container]
+            Rails[Rails API Server]
+            Swagger[Swagger UI]
+            RSpec[RSpec Tests]
+        end
+        
+        subgraph Database_Container[Database Container]
+            PostgreSQL[(PostgreSQL Database)]
+        end
+        
+        subgraph Network[Docker Network]
+            DockerCompose[Docker Compose Orchestration]
+        end
+    end
 
-User --> Web
-Web --> DB
-Web --> Swagger
-Web --> RSpec
-Web --> DockerCompose
+    User --> Rails
+    Browser --> Swagger
+    Rails --> PostgreSQL
+    Rails --> Swagger
+    Rails --> RSpec
+    DockerCompose --> Web_Container
+    DockerCompose --> Database_Container
+    PostgreSQL -.-> Rails
 ```
 </details>
 
