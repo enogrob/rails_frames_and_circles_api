@@ -30,7 +30,7 @@ Key features include:
 - Circles must always fit entirely within their parent frame.
 - Frames themselves do not touch or intersect.
 
-    <img src="public/screenshot_94.png" alt="Screenshot" style="max-width:70%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);" />
+    <img src="public/screenshot_94.png" alt="Screenshot" style="max-width:50%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);" />
 
 - All measurements are expressed in centimeters, supporting decimal values for precision.
 - Business logic is encapsulated in service objects for maintainability and testability.
