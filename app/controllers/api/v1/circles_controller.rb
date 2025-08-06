@@ -1,13 +1,13 @@
 module Api
   module V1
     class CirclesController < ApplicationController
-      before_action :set_frame, only: [:create]
-      before_action :set_circle, only: [:show, :update, :destroy]
+      before_action :set_frame, only: [ :create ]
+      before_action :set_circle, only: [ :show, :update, :destroy ]
 
       def index
         frame = Frame.find_by(id: params[:frame_id])
         unless frame
-          render json: { errors: ["Frame not found"] }, status: :not_found and return
+          render json: { errors: [ "Frame not found" ] }, status: :not_found and return
         end
         circles = frame.circles
         render json: circles, status: :ok
@@ -17,7 +17,7 @@ module Api
         if @circle
           render json: @circle, status: :ok
         else
-          render json: { errors: ["Circle not found"] }, status: :not_found
+          render json: { errors: [ "Circle not found" ] }, status: :not_found
         end
       end
 
@@ -32,7 +32,7 @@ module Api
 
       def update
         if @circle.nil?
-          render json: { errors: ["Circle not found"] }, status: :not_found
+          render json: { errors: [ "Circle not found" ] }, status: :not_found
         else
           if @circle.update(circle_params)
             render json: @circle, status: :ok
@@ -44,7 +44,7 @@ module Api
 
       def destroy
         if @circle.nil?
-          render json: { errors: ["Circle not found"] }, status: :not_found
+          render json: { errors: [ "Circle not found" ] }, status: :not_found
         else
           CircleDeletionService.call(@circle)
           head :no_content
@@ -55,7 +55,7 @@ module Api
 
       def set_frame
         @frame = Frame.find_by(id: params[:frame_id])
-        render json: { errors: ["Frame not found"] }, status: :not_found unless @frame
+        render json: { errors: [ "Frame not found" ] }, status: :not_found unless @frame
       end
 
       def set_circle

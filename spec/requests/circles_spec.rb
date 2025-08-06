@@ -38,7 +38,7 @@ RSpec.describe 'circles', type: :request do
           center_y: { type: :number, format: :float },
           diameter: { type: :number, format: :float }
         },
-        required: ['center_x', 'center_y', 'diameter']
+        required: [ 'center_x', 'center_y', 'diameter' ]
       }
 
       response(201, 'created') do
@@ -100,10 +100,10 @@ RSpec.describe 'circles', type: :request do
               center_y: { type: :number, format: :float },
               diameter: { type: :number, format: :float }
             },
-            required: ["center_y", "diameter"]
+            required: [ "center_y", "diameter" ]
           }
         },
-        required: ["circle"]
+        required: [ "circle" ]
       }
 
       response(200, 'successful') do

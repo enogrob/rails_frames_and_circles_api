@@ -20,14 +20,14 @@ module Api
         if frame
           render json: frame, status: :ok
         else
-          render json: { errors: ["Frame not found"] }, status: :not_found
+          render json: { errors: [ "Frame not found" ] }, status: :not_found
         end
       end
 
       def update
         frame = Frame.find_by(id: params[:id])
         if frame.nil?
-          render json: { errors: ["Frame not found"] }, status: :not_found
+          render json: { errors: [ "Frame not found" ] }, status: :not_found
         elsif frame.update(frame_params)
           render json: frame, status: :ok
         else
@@ -38,9 +38,9 @@ module Api
       def destroy
         frame = Frame.find_by(id: params[:id])
         if frame.nil?
-          render json: { errors: ["Frame not found"] }, status: :not_found
+          render json: { errors: [ "Frame not found" ] }, status: :not_found
         elsif frame.circles.exists?
-          render json: { errors: ["Cannot delete frame with circles"] }, status: :unprocessable_entity
+          render json: { errors: [ "Cannot delete frame with circles" ] }, status: :unprocessable_entity
         else
           frame.destroy
           head :no_content

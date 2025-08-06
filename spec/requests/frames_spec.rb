@@ -10,7 +10,7 @@ RSpec.describe 'frames', type: :request do
       response(200, 'successful') do
         schema type: :array,
                items: { '$ref' => '#/components/schemas/Frame' }
-        
+
         run_test!
       end
     end
@@ -20,7 +20,7 @@ RSpec.describe 'frames', type: :request do
       description 'Cria um novo quadro'
       consumes 'application/json'
       produces 'application/json'
-      
+
       parameter name: :frame, in: :body, schema: {
         type: :object,
         properties: {
@@ -29,12 +29,12 @@ RSpec.describe 'frames', type: :request do
           width: { type: :number, format: :float },
           height: { type: :number, format: :float }
         },
-        required: ['center_x', 'center_y', 'width', 'height']
+        required: [ 'center_x', 'center_y', 'width', 'height' ]
       }
 
       response(201, 'created') do
         schema '$ref' => '#/components/schemas/Frame'
-        
+
         let(:frame) do
           {
             frame: {
@@ -45,13 +45,13 @@ RSpec.describe 'frames', type: :request do
             }
           }
         end
-        
+
         run_test!
       end
 
       response(422, 'unprocessable entity') do
         schema '$ref' => '#/components/schemas/Error'
-        
+
         let(:frame) do
           {
             frame: {
@@ -62,7 +62,7 @@ RSpec.describe 'frames', type: :request do
             }
           }
         end
-        
+
         run_test!
       end
     end
@@ -85,9 +85,9 @@ RSpec.describe 'frames', type: :request do
 
       response(404, 'not found') do
         schema '$ref' => '#/components/schemas/Error'
-        
+
         let(:id) { 99999 }
-        
+
         run_test!
       end
     end
@@ -97,7 +97,7 @@ RSpec.describe 'frames', type: :request do
       description 'Atualiza um quadro'
       consumes 'application/json'
       produces 'application/json'
-      
+
       parameter name: :frame, in: :body, schema: {
         type: :object,
         properties: {
@@ -127,7 +127,7 @@ RSpec.describe 'frames', type: :request do
 
       response(404, 'not found') do
         schema '$ref' => '#/components/schemas/Error'
-        
+
         let(:id) { 99999 }
         let(:frame) do
           {
@@ -139,7 +139,7 @@ RSpec.describe 'frames', type: :request do
             }
           }
         end
-        
+
         run_test!
       end
 
@@ -173,9 +173,9 @@ RSpec.describe 'frames', type: :request do
 
       response(404, 'not found') do
         schema '$ref' => '#/components/schemas/Error'
-        
+
         let(:id) { 99999 }
-        
+
         run_test!
       end
     end
