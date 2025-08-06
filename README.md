@@ -83,10 +83,10 @@ graph TD
     Frame --> PostgreSQL
     Circle --> PostgreSQL
 
-    classDef api fill:#b2f7ef,stroke:#81c784,stroke-width:2px;
-    classDef model fill:#e1bee7,stroke:#7e57c2,stroke-width:2px;
-    classDef service fill:#ffe0b2,stroke:#ffb300,stroke-width:2px;
-    classDef db fill:#cfd8dc,stroke:#607d8b,stroke-width:2px;
+    classDef api fill:#b2f7ef,stroke:#81c784,stroke-width:2px,color:#222;
+    classDef model fill:#e1bee7,stroke:#7e57c2,stroke-width:2px,color:#222;
+    classDef service fill:#ffe0b2,stroke:#ffb300,stroke-width:2px,color:#222;
+    classDef db fill:#cfd8dc,stroke:#607d8b,stroke-width:2px,color:#222;
     class FramesController,CirclesController api;
     class Frame,Circle model;
     class FrameCreationService,FrameDeletionService,CircleCreationService,CircleDeletionService,CircleQueryService,CircleUpdateService service;
@@ -123,8 +123,8 @@ graph TD
     Brakeman --> Rails
     SimpleCov --> RSpec
 
-    classDef gem fill:#b2f7ef,stroke:#81c784,stroke-width:2px;
-    classDef model fill:#e1bee7,stroke:#7e57c2,stroke-width:2px;
+    classDef gem fill:#b2f7ef,stroke:#81c784,stroke-width:2px,color:#222;
+    classDef model fill:#e1bee7,stroke:#7e57c2,stroke-width:2px,color:#222;
     class Rails,RSwag,Brakeman,SimpleCov,Puma,Thruster,Rubocop gem;
     class Frame,Circle model;
 ```
@@ -224,11 +224,11 @@ graph TD
     DockerCompose --> Database_Container
     PostgreSQL -.-> Rails
 
-    style Rails fill:#b2f7ef,stroke:#388e3c,stroke-width:2px
-    style Swagger fill:#e1bee7,stroke:#7e57c2,stroke-width:2px
-    style RSpec fill:#ffe0b2,stroke:#ffb300,stroke-width:2px
-    style PostgreSQL fill:#cfd8dc,stroke:#607d8b,stroke-width:2px
-    style DockerCompose fill:#fff9c4,stroke:#ffd54f,stroke-width:2px
+    style Rails fill:#b2f7ef,stroke:#388e3c,stroke-width:2px,color:#222
+    style Swagger fill:#e1bee7,stroke:#7e57c2,stroke-width:2px,color:#222
+    style RSpec fill:#ffe0b2,stroke:#ffb300,stroke-width:2px,color:#222
+    style PostgreSQL fill:#cfd8dc,stroke:#607d8b,stroke-width:2px,color:#222
+    style DockerCompose fill:#fff9c4,stroke:#ffd54f,stroke-width:2px,color:#222
 ```
 </details>
 
@@ -352,8 +352,8 @@ graph TD
     circle_deletion_service_spec["🟢 circle_deletion_service_spec.rb\n100%"]:::full
     swagger_helper["🟢 swagger_helper.rb\n100%"]:::full
 
-    classDef full fill:#b2f7ef,stroke:#81c784,stroke-width:2px;
-    classDef partial fill:#fff9c4,stroke:#ffd54f,stroke-width:2px;
+    classDef full fill:#b2f7ef,stroke:#81c784,stroke-width:2px,color:#222;
+    classDef partial fill:#fff9c4,stroke:#ffd54f,stroke-width:2px,color:#222;
 ```
 
 **Summary:**  
