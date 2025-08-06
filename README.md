@@ -50,7 +50,7 @@ The API is structured with:
 - **API Documentation**: Swagger/OpenAPI via RSwag
 
 ```mermaid
-%% Architecture Diagram with Pastel Colors and Emoticons
+%% Architecture
 graph TD
     subgraph API_Layer[🟢 API Layer]
         FramesController[🟢 FramesController]
@@ -316,45 +316,35 @@ commit id: "add-readme" tag: "📖"
 <details>
 <summary><strong>7. Test Coverage Results</strong> (Click to expand)</summary>
 
-```mermaid
-pie
-    title 🧪 Overall Coverage
-    "✅ Covered (587 lines)" : 587
-    "❌ Missed (2 lines)" : 2
-```
+- **Overall Coverage:** 99.66% (587/589 lines)
 
-```mermaid
-%% File-by-file coverage bar chart
-graph TD
-    frames_controller["🟡 frames_controller.rb\n97.06%"]:::partial
-    circle_model["🟡 circle.rb\n97.50%"]:::partial
-    circles_controller["🟢 circles_controller.rb\n100%"]:::full
-    application_controller["🟢 application_controller.rb\n100%"]:::full
-    application_record["🟢 application_record.rb\n100%"]:::full
-    frame_model["🟢 frame.rb\n100%"]:::full
-    circle_creation_service["🟢 circle_creation_service.rb\n100%"]:::full
-    circle_deletion_service["🟢 circle_deletion_service.rb\n100%"]:::full
-    frame_creation_service["🟢 frame_creation_service.rb\n100%"]:::full
-    routes["🟢 routes.rb\n100%"]:::full
-    circle_spec["🟢 circle_spec.rb\n100%"]:::full
-    frame_edge_cases_spec["🟢 frame_edge_cases_spec.rb\n100%"]:::full
-    frame_spec["🟢 frame_spec.rb\n100%"]:::full
-    circles_spec["🟢 circles_spec.rb\n100%"]:::full
-    frames_spec["🟢 frames_spec.rb\n100%"]:::full
-    circle_creation_service_spec["🟢 circle_creation_service_spec.rb\n100%"]:::full
-    circle_deletion_service_spec["🟢 circle_deletion_service_spec.rb\n100%"]:::full
-    swagger_helper["🟢 swagger_helper.rb\n100%"]:::full
-
-    classDef full fill:#b2f7ef,stroke:#81c784,stroke-width:2px,color:#222;
-    classDef partial fill:#fff9c4,stroke:#ffd54f,stroke-width:2px,color:#222;
-```
+| File                              | Coverage   |
+|-----------------------------------|------------|
+| frames_controller.rb              | 97.06%     |
+| circle.rb                         | 97.50%     |
+| circles_controller.rb             | 100%       |
+| application_controller.rb         | 100%       |
+| application_record.rb             | 100%       |
+| frame.rb                          | 100%       |
+| circle_creation_service.rb        | 100%       |
+| circle_deletion_service.rb        | 100%       |
+| frame_creation_service.rb         | 100%       |
+| routes.rb                         | 100%       |
+| circle_spec.rb                    | 100%       |
+| frame_edge_cases_spec.rb          | 100%       |
+| frame_spec.rb                     | 100%       |
+| circles_spec.rb                   | 100%       |
+| frames_spec.rb                    | 100%       |
+| circle_creation_service_spec.rb   | 100%       |
+| circle_deletion_service_spec.rb   | 100%       |
+| swagger_helper.rb                 | 100%       |
 
 **Summary:**  
 - **All Files:** 99.66% covered at 2.63 hits/line  
 - **18 files in total**  
 - **589 relevant lines, 587 lines covered, 2 lines missed**  
 - **Only 2 files have missed lines:**  
-  - `app/controllers/api/v1/frames_controller.rb` (1 missed)
+  - `app/controllers/api/v1/frames_controller.rb` (1 missed)  
   - `app/models/circle.rb` (1 missed)
 
 </details>
