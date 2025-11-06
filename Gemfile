@@ -34,7 +34,7 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem "rswag", "~> 2.16"
+  gem "rswag", "~> 2.17"
   gem "rswag-api", "~> 2.16"
   gem "rswag-ui", "~> 2.16"
   gem "rswag-specs", "~> 2.16"
