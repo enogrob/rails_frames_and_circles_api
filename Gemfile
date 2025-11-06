@@ -36,7 +36,7 @@ group :development, :test do
 
   gem "rswag", "~> 2.16"
   gem "rswag-api", "~> 2.16"
-  gem "rswag-ui", "~> 2.16"
+  gem "rswag-ui", "~> 2.17"
   gem "rswag-specs", "~> 2.16"
 end
 
